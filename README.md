@@ -1,5 +1,33 @@
 #Usage
 
+There's a CLI application that can be used to interact with the application. To run it, first you need to build the jar file via: 
+
+#### Running The Application
+*nix
+``` 
+./gradlew build
+```
+windows (untested)
+```
+gradlew.bah build
+```
+
+Then you can run via the sh script 
+
+```
+sh ./run.sh
+```
+
+or manually via java
+
+```
+java -jar build/libs/seat-reservations.jar
+```
+
+####Interacting with the Application
+
+The application is (hopefully) self explanatory. There is no error handling in the CLI, so be gentle. Some additional features outside of the problem statement have been added to help facilitate testing.    
+
 ####Running Tests
 *nix
 ```
@@ -25,7 +53,11 @@ gradlew build
 #Assumptions
 
 * Venues are considered to be rectangle venues. Every row has the same number of seats
-
+* The 'best seat' algorithm is very simple. 
+    * Rows closest to the stage, row 0 being the first, are preferred
+    * requested seats will not be broken up across rows. 
+    * within a row, seats are filled started from seat 0. There is no effort to get as close to the stage and then radiate out towards the edges of the stage
+* Seats are held for 30 seconds, and then they become available again 
 
 #Technologies Used
 
