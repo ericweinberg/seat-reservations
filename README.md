@@ -1,4 +1,4 @@
-#Usage
+# Usage
 
 There's a CLI application that can be used to interact with the application. To run it, first you need to build the jar file via: 
 
@@ -24,11 +24,11 @@ or manually via java
 java -jar build/libs/seat-reservations.jar
 ```
 
-####Interacting with the Application
+#### Interacting with the Application
 
 The application is (hopefully) self explanatory. There is no error handling in the CLI, so be gentle. Some additional features outside of the problem statement have been added to help facilitate testing.    
 
-####Running Tests
+#### Running Tests
 *nix
 ```
 ./gradle test
@@ -38,7 +38,7 @@ windows (untested)
 ```
 gradlew.bat test
 ```
-####Building
+#### Building
 
 *nix
 ```
@@ -50,7 +50,7 @@ windows (untested)
 gradlew build
 ```
 
-#Assumptions
+# Assumptions
 
 * Venues are considered to be rectangle venues. Every row has the same number of seats
 * The 'best seat' algorithm is very simple. 
@@ -59,12 +59,12 @@ gradlew build
     * within a row, seats are filled started from seat 0. There is no effort to get as close to the stage and then radiate out towards the edges of the stage
 * Seats are held for 30 seconds, and then they become available again 
 
-#Technologies Used
+# Technologies Used
 
 * gradle 
 * java
 
-#Problem Statement
+# Problem Statement
 
 Implement a simple ticket service that facilitates the discovery, temporary hold, and final reservation of seats within a high-demand performance
 venue.
