@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Implementation of the
- *
+ * <p>
  * Created on 10/9/17.
  */
 public class VenueTicketService implements TicketService {
@@ -35,7 +35,7 @@ public class VenueTicketService implements TicketService {
 
         executorService.scheduleAtFixedRate(() -> {
             seatHoldMap.values().forEach(seatHold -> {
-                if(seatHold.getCreatedDate().plusSeconds(HELD_SEAT_TIMEOUT_SECONDS).isAfter(LocalDateTime.now())) {
+                if (seatHold.getCreatedDate().plusSeconds(HELD_SEAT_TIMEOUT_SECONDS).isAfter(LocalDateTime.now())) {
                     venue.releaseSeats(seatHold.getSeats());
                 }
             });
@@ -64,7 +64,7 @@ public class VenueTicketService implements TicketService {
         //look up the SeatHold
         SeatHold seatHold = seatHoldMap.get(seatHoldId);
         //if seatHold isn't found, the id is bad, or the hold expired.
-        if(seatHold == null) {
+        if (seatHold == null) {
             throw new HoldNotFoundException();
         }
         //if it exists, reserve the seats
@@ -76,7 +76,7 @@ public class VenueTicketService implements TicketService {
 
     public Reservation lookupConfirmation(String confirmationNumber) {
         Reservation reservation = reservationMap.get(confirmationNumber);
-        if(reservation == null) {
+        if (reservation == null) {
             throw new ReservationNotFoundException();
         } else {
             return reservation;

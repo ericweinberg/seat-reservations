@@ -33,23 +33,23 @@ public class TicketServiceRunner {
         String input = console.next();
 
         switch (input) {
-            case "1" : {
+            case "1": {
                 placeSeatHold();
                 break;
             }
-            case "2" : {
+            case "2": {
                 reserveSeats();
                 break;
             }
-            case "3" : {
+            case "3": {
                 lookupReservation();
                 break;
             }
-            case "4" : {
+            case "4": {
                 viewSeatingChart();
                 break;
             }
-            case "5" : {
+            case "5": {
                 exit();
                 break;
             }
@@ -57,7 +57,6 @@ public class TicketServiceRunner {
                 showMainMenu();
             }
         }
-
     }
 
     private void reserveSeats() {
@@ -70,7 +69,7 @@ public class TicketServiceRunner {
             String confirmation = ticketService.reserveSeats(orderId, email);
             System.out.println(String.format("Thank you %s! Your order confirmation is %s",
                     email, confirmation));
-        } catch(HoldNotFoundException e) {
+        } catch (HoldNotFoundException e) {
             System.out.println("I'm sorry, we weren't able to find your order. It either expired, or you have a typo");
         }
         System.out.println();
@@ -86,8 +85,8 @@ public class TicketServiceRunner {
             Reservation reservation = ((VenueTicketService) ticketService).lookupConfirmation(confirmationNumber);
             System.out.println("We found your reservation!");
             System.out.println(reservation);
-        } catch(ReservationNotFoundException e) {
-            System.out.println("Unable to find confirmation: "+confirmationNumber);
+        } catch (ReservationNotFoundException e) {
+            System.out.println("Unable to find confirmation: " + confirmationNumber);
         }
         System.out.println();
         System.out.println();
@@ -98,7 +97,7 @@ public class TicketServiceRunner {
         System.out.println();
         System.out.println();
         //note, i wouldn't normally do this. I wanted to demonstrate the given interface
-        ((VenueTicketService)ticketService).printSeatMap();
+        ((VenueTicketService) ticketService).printSeatMap();
         System.out.println();
         System.out.println();
         handleMainMenu();
@@ -120,7 +119,7 @@ public class TicketServiceRunner {
             System.out.println(String.format("Thank you %s. Your seats will be held under order, %d",
                     hold.getCustomerEmail(), hold.getId()));
             System.out.println("Note: seats will only be held for 30 seconds");
-        } catch(NoSeatsAvailableException e) {
+        } catch (NoSeatsAvailableException e) {
             System.out.println("I'm sorry, there are no more blocks of seats for you, please try a smaller seat block");
         }
         System.out.println();

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Represents a Seat in the venue
- *
+ * <p>
  * Created on 10/9/17.
  */
 public class Seat {
@@ -41,13 +41,13 @@ public class Seat {
     }
 
     public void releaseSeat() {
-        if(this.status != Status.RESERVED) {
+        if (this.status != Status.RESERVED) {
             this.status = Status.OPEN;
         }
     }
 
     public void holdSeat() {
-        if(this.status != Status.RESERVED) {
+        if (this.status != Status.RESERVED) {
             this.status = Status.HELD;
         }
     }

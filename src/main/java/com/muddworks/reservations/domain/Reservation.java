@@ -6,7 +6,7 @@ import java.util.UUID;
 
 /**
  * Represents a reservation that's already been made.
- *
+ * <p>
  * Created on 10/10/17.
  */
 public class Reservation {

@@ -61,7 +61,7 @@ public class Venue {
      * The best seats are at the front of venue (row 0)
      * Rows are filled starting at seat 0
      *
-     * @param numSeats      the number of seats to reserve
+     * @param numSeats the number of seats to reserve
      * @return a list of held seats
      */
     public synchronized List<Seat> holdBestSeats(int numSeats) {
@@ -108,7 +108,7 @@ public class Venue {
      */
     public synchronized void releaseSeats(List<Seat> seats) {
         seats.forEach(seat -> venueLayout[seat.getRowNumber()][seat.getSeatNumber()].releaseSeat());
-        availableSeats+=seats.size();
+        availableSeats += seats.size();
     }
 
     /**
