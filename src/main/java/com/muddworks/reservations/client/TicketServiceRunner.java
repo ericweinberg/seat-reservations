@@ -2,9 +2,11 @@ package com.muddworks.reservations.client;
 
 import com.muddworks.reservations.TicketService;
 import com.muddworks.reservations.VenueTicketService;
+import com.muddworks.reservations.domain.Reservation;
 import com.muddworks.reservations.domain.SeatHold;
 import com.muddworks.reservations.exception.HoldNotFoundException;
 import com.muddworks.reservations.exception.NoSeatsAvailableException;
+import com.muddworks.reservations.exception.ReservationNotFoundException;
 
 import java.util.Scanner;
 
@@ -52,7 +54,6 @@ public class TicketServiceRunner {
                 break;
             }
             default: {
-                System.out.println("why aren't we in here?");
                 showMainMenu();
             }
         }
@@ -80,8 +81,14 @@ public class TicketServiceRunner {
     private void lookupReservation() {
         System.out.println("Please enter your confirmation number");
         String confirmationNumber = console.next();
-        //note, i wouldn't normally do this. I wanted to demonstrate the given interface
-        ((VenueTicketService)ticketService).lookupConfirmation(confirmationNumber);
+        try {
+            //note, i wouldn't normally do this. I wanted to demonstrate the given interface
+            Reservation reservation = ((VenueTicketService) ticketService).lookupConfirmation(confirmationNumber);
+            System.out.println("We found your reservation!");
+            System.out.println(reservation);
+        } catch(ReservationNotFoundException e) {
+            System.out.println("Unable to find confirmation: "+confirmationNumber);
+        }
         System.out.println();
         System.out.println();
         handleMainMenu();
